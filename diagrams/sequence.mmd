@@ -1,0 +1,36 @@
+sequenceDiagram
+
+    actor Student
+    participant UI as Assistant UI
+    participant API as Backend API
+    participant Agent as AI Agent
+    participant MC as Moodle Connector
+    participant Moodle
+    participant Context as Context Builder
+    participant Gemini as Gemini API
+    participant DB as Assistant DB
+
+    Student->>UI: Ask question
+    UI->>API: Submit question
+
+    API->>Agent: Process question
+
+    Agent->>MC: Request assignments/deadlines
+    MC->>Moodle: Authenticated API request
+    Moodle-->>MC: Assignment data
+
+    MC-->>Agent: Relevant Moodle data
+
+    Agent->>Context: Build context
+    Context->>DB: Check cached data
+    DB-->>Context: Context data
+    Context-->>Agent: Prepared context
+
+    Agent->>Gemini: Question + prompt + context
+    Gemini-->>Agent: Generated answer
+
+    Agent->>DB: Store conversation
+    Agent-->>API: Final answer
+
+    API-->>UI: Response
+    UI-->>Student: Display answer

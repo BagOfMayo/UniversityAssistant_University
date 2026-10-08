@@ -1,0 +1,39 @@
+@startuml
+
+node "Student Device" {
+    artifact "Web Browser" as Browser
+}
+
+node "University / Cloud Server" {
+
+    component "AI Assistant Backend" as Backend
+    component "AI Agent" as Agent
+    component "Moodle Connector" as Connector
+    component "Gemini Client" as GeminiClient
+
+    database "PostgreSQL" as DB
+}
+
+node "University Moodle Server" {
+    component "Moodle Application" as Moodle
+    component "Moodle Web Services" as MoodleWS
+}
+
+cloud "Google Cloud / Gemini API" {
+    component "Gemini Model" as Gemini
+}
+
+Browser --> Backend : HTTPS
+
+Backend --> Agent
+Agent --> Connector
+Connector --> MoodleWS : REST/Web Service
+MoodleWS --> Moodle
+
+Agent --> GeminiClient
+GeminiClient --> Gemini : HTTPS API
+
+Backend --> DB
+Agent --> DB
+
+@enduml

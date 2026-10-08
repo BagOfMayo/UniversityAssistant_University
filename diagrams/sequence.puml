@@ -1,0 +1,40 @@
+@startuml
+
+actor Student
+
+participant "Assistant UI" as UI
+participant "Backend API" as API
+participant "AI Agent" as AGENT
+participant "Moodle Connector" as MC
+participant Moodle
+participant "Context Builder" as CB
+participant "Gemini API" as GEMINI
+database "Assistant DB" as DB
+
+Student -> UI : Ask question
+UI -> API : Submit question
+
+API -> AGENT : Process question
+
+AGENT -> MC : Request assignments/deadlines
+MC -> Moodle : Authenticated API request
+Moodle --> MC : Assignment data
+
+MC --> AGENT : Relevant Moodle data
+
+AGENT -> CB : Build context
+CB -> DB : Check cached data
+DB --> CB : Context data
+
+CB --> AGENT : Prepared context
+
+AGENT -> GEMINI : Question + system prompt + context
+GEMINI --> AGENT : Generated answer
+
+AGENT -> DB : Store conversation
+AGENT --> API : Final answer
+
+API --> UI : Response
+UI --> Student : Display answer
+
+@enduml

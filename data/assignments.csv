@@ -1,0 +1,5 @@
+assignment_id,course_id,assignment,deadline,status
+A001,C001,SQL Project,10/9/2026,Not submitted
+A002,C002,AI Ethics Report,10/12/2026,In progress
+A003,C003,Java OOP Project,10/15/2026,Not submitted
+A004,C002,Neural Networks Quiz,10/20/2026,Not started

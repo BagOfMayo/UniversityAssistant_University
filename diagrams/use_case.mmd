@@ -1,0 +1,29 @@
+flowchart LR
+
+    Student([Student])
+    MoodleAdmin([Moodle Administrator])
+    SystemAdmin([System Administrator])
+
+    subgraph System["AI University Assistant"]
+        UC1["Ask Academic Question"]
+        UC2["View Courses"]
+        UC3["View Assignments"]
+        UC4["Check Deadlines"]
+        UC5["Summarize Course Information"]
+        UC6["Generate Study Plan"]
+
+        UC7["Configure Moodle Web Services"]
+        UC8["Configure Gemini API"]
+        UC9["Manage System"]
+    end
+
+    Student --> UC1
+    Student --> UC2
+    Student --> UC3
+    Student --> UC4
+    Student --> UC5
+    Student --> UC6
+
+    MoodleAdmin --> UC7
+    SystemAdmin --> UC8
+    SystemAdmin --> UC9

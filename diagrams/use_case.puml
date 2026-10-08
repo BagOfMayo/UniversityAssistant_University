@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor Student
+actor "Moodle Administrator" as MoodleAdmin
+actor "System Administrator" as SystemAdmin
+
+rectangle "AI University Assistant" {
+
+    usecase "Ask Academic Question" as UC1
+    usecase "View Courses" as UC2
+    usecase "View Assignments" as UC3
+    usecase "Check Deadlines" as UC4
+    usecase "Summarize Course Information" as UC5
+    usecase "Generate Study Plan" as UC6
+
+    usecase "Configure Moodle Web Services" as UC7
+    usecase "Configure Gemini API" as UC8
+    usecase "Manage System" as UC9
+}
+
+Student --> UC1
+Student --> UC2
+Student --> UC3
+Student --> UC4
+Student --> UC5
+Student --> UC6
+
+MoodleAdmin --> UC7
+SystemAdmin --> UC8
+SystemAdmin --> UC9
+
+UC1 .> UC3 : <<include>>
+UC1 .> UC4 : <<include>>
+UC1 .> UC5 : <<include>>
+
+@enduml

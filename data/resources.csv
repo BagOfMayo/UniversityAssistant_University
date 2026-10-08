@@ -1,0 +1,8 @@
+resource_id,course_id,resource_name,resource_type
+R001,C001,SQL Lecture Slides,PDF
+R002,C001,Database Laboratory Week 4,Lab
+R003,C002,AI Lecture Slides,PDF
+R004,C002,Introduction to Generative AI,Article
+R005,C002,Generative AI Ethics Laboratory,Lab
+R006,C003,Java OOP Lecture Slides,PDF
+R007,C003,Java Week 5 Laboratory,Lab

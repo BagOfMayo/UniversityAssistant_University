@@ -1,0 +1,35 @@
+flowchart TB
+
+    subgraph StudentDevice["Student Device"]
+        Browser["Web Browser"]
+    end
+
+    subgraph Server["University / Cloud Server"]
+        Backend["AI Assistant Backend"]
+        Agent["AI Agent"]
+        Connector["Moodle Connector"]
+        GeminiClient["Gemini Client"]
+        DB[("PostgreSQL")]
+    end
+
+    subgraph MoodleServer["University Moodle Server"]
+        Moodle["Moodle Application"]
+        MoodleWS["Moodle Web Services"]
+    end
+
+    subgraph Google["Google Cloud"]
+        Gemini["Gemini API / Model"]
+    end
+
+    Browser -->|HTTPS| Backend
+
+    Backend --> Agent
+    Agent --> Connector
+    Connector -->|REST / Web Services| MoodleWS
+    MoodleWS --> Moodle
+
+    Agent --> GeminiClient
+    GeminiClient -->|HTTPS API| Gemini
+
+    Backend --> DB
+    Agent --> DB

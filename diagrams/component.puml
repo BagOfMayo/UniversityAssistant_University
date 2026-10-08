@@ -1,0 +1,45 @@
+@startuml
+
+skinparam componentStyle rectangle
+
+actor Student
+
+component "Assistant UI" as UI
+component "Backend API" as API
+component "Authentication Service" as AUTH
+component "AI Agent / Orchestrator" as AGENT
+component "Moodle Connector" as MOODLECON
+component "Context Builder" as CONTEXT
+component "Gemini Client" as GEMINI
+
+database "University Assistant DB" as DB
+
+cloud "Moodle" as MOODLE
+cloud "Google Gemini API" as GEMINIAPI
+
+Student --> UI : asks question
+
+UI --> API : HTTPS request
+
+API --> AUTH : authenticate user
+API --> AGENT : process request
+
+AGENT --> MOODLECON : request Moodle data
+MOODLECON --> MOODLE : Web Services API
+MOODLE --> MOODLECON : course/assignment data
+
+AGENT --> CONTEXT : build context
+CONTEXT --> DB : read cached data
+CONTEXT --> GEMINI : prepared context
+
+GEMINI --> GEMINIAPI : generateContent()
+GEMINIAPI --> GEMINI : generated response
+
+GEMINI --> AGENT : AI answer
+AGENT --> API : final response
+API --> UI : answer
+UI --> Student : display answer
+
+API --> DB : conversation/log data
+
+@enduml

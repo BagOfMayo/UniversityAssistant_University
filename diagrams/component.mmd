@@ -1,0 +1,40 @@
+flowchart LR
+
+    Student([Student])
+
+    UI["Assistant UI"]
+    API["Backend API"]
+    AUTH["Authentication Service"]
+    AGENT["AI Agent / Orchestrator"]
+    MOODLECON["Moodle Connector"]
+    CONTEXT["Context Builder"]
+    GEMINI["Gemini Client"]
+
+    DB[("University Assistant DB")]
+
+    MOODLE["Moodle"]
+    GEMINIAPI["Google Gemini API"]
+
+    Student --> UI
+    UI --> API
+
+    API --> AUTH
+    API --> AGENT
+
+    AGENT --> MOODLECON
+    MOODLECON --> MOODLE
+    MOODLE --> MOODLECON
+
+    AGENT --> CONTEXT
+    CONTEXT --> DB
+    CONTEXT --> GEMINI
+
+    GEMINI --> GEMINIAPI
+    GEMINIAPI --> GEMINI
+
+    GEMINI --> AGENT
+    AGENT --> API
+    API --> UI
+    UI --> Student
+
+    API --> DB

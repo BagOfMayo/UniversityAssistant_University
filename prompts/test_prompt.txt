@@ -1,0 +1,23 @@
+Use the following Moodle data to answer the student's question.
+
+Today's date: October 8, 2026.
+
+MOODLE COURSES:
+{{COURSES}}
+
+MOODLE ASSIGNMENTS:
+{{ASSIGNMENTS}}
+
+MOODLE RESOURCES:
+{{RESOURCES}}
+
+STUDENT QUESTION:
+{{QUESTION}}
+
+Follow these rules:
+
+* Use only the provided Moodle information.
+* Do not invent missing information.
+* Give exact dates where relevant.
+* If the information is unavailable, explicitly say that it is unavailable.
+* Answer the student directly and clearly.
